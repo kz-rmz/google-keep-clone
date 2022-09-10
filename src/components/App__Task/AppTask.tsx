@@ -6,7 +6,6 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 interface ITodo {
-    userId?: number,
     id: number,
     title: string,
     completed: boolean

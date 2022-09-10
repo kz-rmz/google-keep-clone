@@ -9,7 +9,6 @@ import CircularProgress from '@mui/material/CircularProgress';
 import AppTask from '../App__Task/AppTask';
 
 interface ITodo {
-  userId: number,
   id: number,
   title: string,
   completed: boolean
@@ -21,7 +20,7 @@ export default function AppTasksList(): JSX.Element {
   const [ todos, setTodos] = React.useState<ITodo[] | []>([]);
 
   React.useEffect( ()=> {
-    fetch("https://jsonplaceholder.typicode.com/todos")
+    fetch("https://github.com/kz-rmz/google-keep-clone/todos")
     .then( res => res.json())
     .then( 
       res => {
