@@ -1,12 +1,9 @@
-[
-    {
-        "id": 0,
-        "title": "Finish project",
-        "comleted": false
-    },
-    {
-        "id": 1,
-        "title": "Add settings button ",
-        "comleted": false
+{
+    "Todo": {
+        "id": { "int": { "min": 0, "max": 100 } },
+        "title": {"string": {}},
+        "comleted": {
+            "boolean": {}
+        }
     }
-]
+}
