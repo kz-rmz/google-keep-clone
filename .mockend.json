@@ -1,9 +1,0 @@
-{
-    "Todo": {
-        "id": { "int": { "min": 0, "max": 100 } },
-        "title": {"string": {}},
-        "comleted": {
-            "boolean": {}
-        }
-    }
-}

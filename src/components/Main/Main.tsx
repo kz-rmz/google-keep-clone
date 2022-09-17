@@ -1,4 +1,5 @@
 import * as React from 'react';
+// MUI section
 import { styled, Theme, CSSObject } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
@@ -12,13 +13,12 @@ import ListItemText from '@mui/material/ListItemText';
 import EmojiObjectsOutlinedIcon from '@mui/icons-material/EmojiObjectsOutlined';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
+// Components import section
+import Header from '../Header/Header';
+import TasksList from '../TasksList/TasksList';
 
-import AppHeader from '../App__Header/AppHeader';
-import AppAddTask from '../App__AddTask/AppAddTask';
-import AppTasksList from '../App__TasksList/AppTasksList';
 
 const drawerWidth = 240;
-
 const openedMixin = (theme: Theme): CSSObject => ({
   width: drawerWidth,
   transition: theme.transitions.create('width', {
@@ -67,7 +67,6 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 export default function AppDrawer(): JSX.Element {
-  // const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
@@ -81,7 +80,7 @@ export default function AppDrawer(): JSX.Element {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppHeader open={open} handleDrawerOpen={handleDrawerOpen}/>
+      <Header open={open} handleDrawerOpen={handleDrawerOpen}/>
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
         </DrawerHeader>
@@ -111,17 +110,7 @@ export default function AppDrawer(): JSX.Element {
           ))}
         </List>
       </Drawer>
-      <Box component="main"
-        sx={{ display: 'flex',
-        flexDirection: 'column',
-        flexGrow: 1, p: 3,
-        gap: '2rem', 
-        justifyContent: 'center', 
-        alignItems: 'center' }}>
-          <DrawerHeader />
-          <AppAddTask />
-          <AppTasksList />
-      </Box>
+      <TasksList />
     </Box>
   );
 }

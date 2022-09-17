@@ -13,15 +13,17 @@ const drawerWidth = 240;
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
+  marginLeft: 'auto',
   borderRadius: theme.shape.borderRadius,
   backgroundColor: alpha(theme.palette.common.white, 0.15),
   '&:hover': {
     backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
-  marginLeft: 0,
   width: '100%',
+
   [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(1),
+    marginLeft: 'auto',
+    marginRight: 'auto',
     width: 'auto',
   },
 }));
@@ -43,11 +45,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: '12ch',
+    [theme.breakpoints.up('md')]: {
+      width: '40ch',
       '&:focus': {
-        width: '20ch',
+        width: '50ch',
       },
     },
   },
@@ -75,13 +76,15 @@ interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
 }
 
-export default function AppHeader({open, handleDrawerOpen}: any): JSX.Element {
+export default function Header({ open: boolean, handleDrawerOpen} : any) : JSX.Element {
   return (
       <AppBar sx={{
         position: "fixed",
-        alignItems: "space-between"
       }}>
-        <Toolbar sx={{px: '8px'}}>
+        <Toolbar sx={{
+          display: 'flex',
+          padding: {xs: '4px', sm: '8px'}
+          }}>
           <IconButton
             size="large"
             edge="start"
@@ -98,22 +101,15 @@ export default function AppHeader({open, handleDrawerOpen}: any): JSX.Element {
             component="div"
             sx={{ mx: { sm: 1, md: 3, lg: 5}, display: { xs: 'none', sm: 'block' } }}
           >
-            MUI
+            Koogle Geep
           </Typography>
-          <Search sx={{
-            display: 'inline-flex',
-            flexGrow: 1,
-            mx: { sm: 1, md: 3, lg: 5}
-            }}>
+          <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
               placeholder="Искать..."
-              inputProps={{ 'aria-label': 'search' }}
-              sx={{
-                flexGrow: 1
-              }}
+              inputProps={{ 'aria-label': 'искать' }}
             />
           </Search>
           <IconButton

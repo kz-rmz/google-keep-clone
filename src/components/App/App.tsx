@@ -1,11 +1,16 @@
 import React from 'react';
-import AppDrawer from '../App__Drawer/AppDrawer';
+import Main from '../Main/Main';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const queryClient = new QueryClient()
 
 function App(): JSX.Element {
   return (
-    <div className="App">
-      <AppDrawer />
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <div className="App">
+        <Main />
+      </div>
+    </QueryClientProvider>
   );
 }
 
