@@ -6,16 +6,28 @@ import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import CircularProgress from '@mui/material/CircularProgress';
 // interfaces
-import ITodo from '../../interfaces/ITodo';
+import ITodo from '../interfaces/ITodo';
 // hooks
-import useTasks from '../../hooks/useTasks';
+import useTasks from '../hooks/useTasks';
+import SearchInputContext from '../context/Context';
 // components
-import NewTask from '../NewTask/NewTask';
-import SingleTask from '../SingleTask/SingleTask';
-
+import NewTask from './NewTask';
+import SingleTask from './SingleTask';
 // React component
 export default function TasksList(): JSX.Element {
   const {isLoading, isError, error, data } = useTasks();
+  const { searchInput, setSearchInput} = React.useContext(SearchInputContext);
+
+  const filteredData = data?.filter((el: any) => {
+    //if no input the return the original
+    if (searchInput === null) {
+        return el;
+    }
+    //return the item which contains the user input
+    else {
+        return el.task.toLowerCase().includes(searchInput)
+    }
+})
 
   if(isError) {
     return  (
@@ -53,7 +65,8 @@ export default function TasksList(): JSX.Element {
             justifyContent: {xs: 'center'}
           }}
         >
-          {data.map( (todo: ITodo, index: number) => (
+
+          {filteredData.map( (todo: ITodo, index: number) => (
             <Grid xs={1} sm={1} md={1} lg={1} key={index} 
                   sx={{
                     minWidth: {xs: '250px', sm: '330px', lg: '250px'},

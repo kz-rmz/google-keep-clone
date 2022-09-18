@@ -14,8 +14,11 @@ import EmojiObjectsOutlinedIcon from '@mui/icons-material/EmojiObjectsOutlined';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 // Components import section
-import Header from '../Header/Header';
-import TasksList from '../TasksList/TasksList';
+import Header from './Header';
+import TasksList from './TasksList';
+import SearchInputContext from '../context/Context';
+
+
 
 
 const drawerWidth = 240;
@@ -68,6 +71,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 export default function AppDrawer(): JSX.Element {
   const [open, setOpen] = React.useState(false);
+  const [ searchInput, setSearchInput ] = React.useState<string | null>(null);
 
   const handleDrawerOpen = () => {
     if(open === false){
@@ -78,6 +82,7 @@ export default function AppDrawer(): JSX.Element {
   };
 
   return (
+    <SearchInputContext.Provider value={{searchInput, setSearchInput}} >
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <Header open={open} handleDrawerOpen={handleDrawerOpen}/>
@@ -112,5 +117,6 @@ export default function AppDrawer(): JSX.Element {
       </Drawer>
       <TasksList />
     </Box>
+    </SearchInputContext.Provider>
   );
 }

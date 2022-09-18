@@ -12,8 +12,8 @@ import { CardActionArea } from '@mui/material';
 import DoneOutlinedIcon from '@mui/icons-material/DoneOutlined';
 import CircularProgress from '@mui/material/CircularProgress';
 
-import ITodo from '../../interfaces/ITodo';
-import TaskDialog from '../TaskDialog/TaskDialog';
+import ITodo from '../interfaces/ITodo';
+import TaskDialog from './TaskDialog';
 
 export default function SingleTask({ id, task, isCompleted } : ITodo): JSX.Element{
   const [ dialogIsOpened, setDialogIsOpened ] = React.useState(false);

@@ -8,6 +8,7 @@ import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import SettingsIcon from '@mui/icons-material/Settings';
+import SearchInputContext from '../context/Context';
 
 const drawerWidth = 240;
 
@@ -77,6 +78,7 @@ interface AppBarProps extends MuiAppBarProps {
 }
 
 export default function Header({ open: boolean, handleDrawerOpen} : any) : JSX.Element {
+  const { searchInput, setSearchInput } = React.useContext(SearchInputContext);
   return (
       <AppBar sx={{
         position: "fixed",
@@ -108,6 +110,7 @@ export default function Header({ open: boolean, handleDrawerOpen} : any) : JSX.E
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
+              onChange={(event => setSearchInput(event.target.value.toLowerCase()))}
               placeholder="Искать..."
               inputProps={{ 'aria-label': 'искать' }}
             />

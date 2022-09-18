@@ -6,7 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useQueryClient, useMutation } from 'react-query';
-import ITodo from '../../interfaces/ITodo';
+import ITodo from '../interfaces/ITodo';
 
 export default function NewTask({updateTasks}:any): JSX.Element {
   const [ task, setTask ] = React.useState<string>('');

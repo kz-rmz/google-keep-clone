@@ -61,7 +61,8 @@ export default function FormDialog({ id, task, isCompleted, dialogIsOpened, hand
               value={editedTask}
               onChange={handleTaskEdition}
               sx={{
-                minWidth: { xs: '400px', md: '350px',lg: '650px'},
+                minWidth: { xs: '400px', md: '350px',lg: '100%'},
+                maxWidth: '100%',
                 minHeight: {xs: '320px', md: '250px', lg: '550px'},
               }}
 

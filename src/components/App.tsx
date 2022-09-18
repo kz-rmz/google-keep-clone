@@ -1,5 +1,5 @@
 import React from 'react';
-import Main from '../Main/Main';
+import Main from './Main';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 const queryClient = new QueryClient()
