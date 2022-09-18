@@ -16,10 +16,6 @@ import SingleTask from '../SingleTask/SingleTask';
 // React component
 export default function TasksList(): JSX.Element {
   const {isLoading, isError, error, data } = useTasks();
-  const [isUpdated, setUpdated] = React.useState(true)
-  function handleNewTask(){
-    setUpdated(false)
-  }
 
   if(isError) {
     return  (
@@ -31,14 +27,15 @@ export default function TasksList(): JSX.Element {
     ) 
   } 
   else if(isLoading){
-    return <CircularProgress sx={{ margin: '50% auto'}} />
+    return <CircularProgress sx={{ margin: '200px auto'}} />
   } else {
     return (
       <Box component="main"
       sx={{ 
       display: 'flex',
+      flexGrow: 1,
       flexDirection: 'column',
-      minWidth: '400px',
+      minWidth: {xs:'250px', sm: '400px'},
       gap: '2rem',
       marginTop: '100px',
       marginBottom: '30px',
@@ -47,7 +44,7 @@ export default function TasksList(): JSX.Element {
       justifyContent: 'center', 
       alignItems: 'center' }}
       >  
-        <NewTask updateTasks={handleNewTask} />
+        <NewTask />
         <Grid 
           container spacing={{ xs: 1.5, lg: 2.5 }}
           columns={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 6 }} 
@@ -59,7 +56,7 @@ export default function TasksList(): JSX.Element {
           {data.map( (todo: ITodo, index: number) => (
             <Grid xs={1} sm={1} md={1} lg={1} key={index} 
                   sx={{
-                    minWidth: {xs: '400px', sm: '250px', lg: '250px'},
+                    minWidth: {xs: '250px', sm: '330px', lg: '250px'},
                     maxWidth: {xs: '400px'},
                     flexGrow: 1}}>
                 <SingleTask 

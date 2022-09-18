@@ -52,10 +52,11 @@ export default function SingleTask({ id, task, isCompleted } : ITodo): JSX.Eleme
         dialogIsOpened={dialogIsOpened}
         handleDialogClose={handleDialogClose}
         />
+
       <Card sx={{minHeight: '150px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
         <CardActionArea onClick={handleDialogOpen} sx={{flexGrow: 1}}>
-          <CardContent>
-            { deleteTask.isLoading ? <CircularProgress size={'1.5rem'} sx={{alignSelf: 'center'}} /> :  
+          <CardContent sx={{position: 'relative'}}>
+            { deleteTask.isLoading ? <CircularProgress size={'1.5rem'} sx={{ position: 'absolute', top: '50%', left: '50%'}} /> :  
             <Typography sx={{ wordWrap: 'break-word' }} variant="body1">
               {task}
             </Typography>
