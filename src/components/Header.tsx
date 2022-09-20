@@ -7,8 +7,9 @@ import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import SettingsIcon from '@mui/icons-material/Settings';
-import SearchInputContext from '../context/Context';
+import ModeNightOutlinedIcon from '@mui/icons-material/ModeNightOutlined';
+import SearchInputContext from '../context/useSearchInputContext';
+import ColorModeContext from '../context/useThemeContext';
 
 const drawerWidth = 240;
 
@@ -78,7 +79,10 @@ interface AppBarProps extends MuiAppBarProps {
 }
 
 export default function Header({ open: boolean, handleDrawerOpen} : any) : JSX.Element {
+  const colorMode = React.useContext(ColorModeContext);
+
   const { searchInput, setSearchInput } = React.useContext(SearchInputContext);
+
   return (
       <AppBar sx={{
         position: "fixed",
@@ -123,7 +127,7 @@ export default function Header({ open: boolean, handleDrawerOpen} : any) : JSX.E
             sx={{  mx: { xs: 0, sm: 1, md: 3, lg: 5} }}
             
           >
-            <SettingsIcon />
+            <ModeNightOutlinedIcon onClick={colorMode.toggleColorMode} />
           </IconButton>
         </Toolbar>
       </AppBar>

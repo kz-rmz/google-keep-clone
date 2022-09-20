@@ -9,7 +9,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import ITodo from '../interfaces/ITodo';
 // hooks
 import useTasks from '../hooks/useTasks';
-import SearchInputContext from '../context/Context';
+import SearchInputContext from '../context/useSearchInputContext';
 // components
 import NewTask from './NewTask';
 import SingleTask from './SingleTask';

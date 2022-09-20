@@ -16,7 +16,7 @@ import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 // Components import section
 import Header from './Header';
 import TasksList from './TasksList';
-import SearchInputContext from '../context/Context';
+import SearchInputContext from '../context/useSearchInputContext';
 
 
 
